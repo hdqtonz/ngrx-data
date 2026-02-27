@@ -1,10 +1,12 @@
 import { Routes } from '@angular/router';
+import { postsResolver } from './posts/posts-resolver';
 
 export const routes: Routes = [
   { path: '', loadComponent: () => import('./home/home').then((c) => c.Home) },
   {
     path: 'posts',
     loadComponent: () => import('./posts/posts-list/posts-list').then((c) => c.PostsList),
+    resolve: { posts: postsResolver },
   },
   {
     path: 'posts/add',
