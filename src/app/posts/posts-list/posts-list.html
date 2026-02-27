@@ -1,3 +1,11 @@
+<div>
+  <h3>Posts List</h3>
+  <hr />
+  <div class="mb-3">
+    <a class="btn btn-primary" [routerLink]="['add']">Add New Post</a>
+  </div>
+</div>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -10,10 +18,16 @@
   <tbody>
     @for (post of posts$ | async; track post.id) {
       <tr>
-        <td>{{ post.id }}</td>
-        <td>{{ post.title }}</td>
-        <td>{{ post.body }}</td>
-        <!-- <td><button (click)="deletePost(post.id)">Delete</button></td> -->
+        <td>{{ post?.id }}</td>
+        <td>{{ post?.title }}</td>
+        <td>{{ post?.body }}</td>
+        <td>
+          <div class="d-flex gap-2">
+            <a class="link-secondary me-2" [routerLink]="['edit', post?.id]">Edit</a>
+            <a class="link-primary me-2" [routerLink]="['view', post?.id]">View</a>
+            <a class="link-danger" (click)="deletePost(post?.id)">Delete</a>
+          </div>
+        </td>
       </tr>
     }
   </tbody>

@@ -17,7 +17,7 @@ export const routes: Routes = [
     loadComponent: () => import('./posts/edit-post/edit-post').then((c) => c.EditPost),
   },
   {
-    path: 'posts/details/:id',
+    path: 'posts/view/:id',
     loadComponent: () => import('./posts/single-post/single-post').then((c) => c.SinglePost),
   },
 ];

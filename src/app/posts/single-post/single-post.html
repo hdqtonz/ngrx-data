@@ -1,1 +1,17 @@
-<p>single-post works!</p>
+<div>
+  <h3>Post Details</h3>
+  <hr />
+
+  @if (post$ | async; as post) {
+    <div>
+      <h4>{{ post.title }}</h4>
+      <p>{{ post.body }}</p>
+      <div class="d-flex gap-4">
+        <a class="link-secondary" [routerLink]="['/posts']">Back to Posts</a>
+        <a class="link-secondary" [routerLink]="['/posts/edit', post.id]">Edit Post</a>
+      </div>
+    </div>
+  } @else {
+    <p>Loading post details...</p>
+  }
+</div>
