@@ -34,7 +34,9 @@ export class EditPost implements OnInit {
 
     this._postsService.getByKey(this.id).subscribe((data) => {
       this.post = data;
-      this.patchFormValues(data.title, data.body);
+      if (this.post) {
+        this.patchFormValues(this.post.title, this.post.body);
+      }
     });
   }
 
